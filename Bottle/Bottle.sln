@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BottleUI", "Bottle\BottleUI.csproj", "{BA535E41-906B-413D-A8EB-B835C18136FB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bottle", "BottleNew\Bottle.csproj", "{C442C10D-154D-4045-B846-EAE55E221606}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{BA535E41-906B-413D-A8EB-B835C18136FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA535E41-906B-413D-A8EB-B835C18136FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA535E41-906B-413D-A8EB-B835C18136FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C442C10D-154D-4045-B846-EAE55E221606}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C442C10D-154D-4045-B846-EAE55E221606}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C442C10D-154D-4045-B846-EAE55E221606}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C442C10D-154D-4045-B846-EAE55E221606}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
