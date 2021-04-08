@@ -72,7 +72,7 @@ namespace BottleNew
             var errors = new List<string>();
 
             const double minLengthFullBottle = 100;
-            const double maxLengthFullBottle = 254;
+            const double maxLengthFullBottle = 250;
 
             const double minBaseLength = 2 * minLengthFullBottle / 3;
             var maxBaseLength = 2 * lengthFullBottle / 3;
@@ -83,7 +83,7 @@ namespace BottleNew
             const double minBaseDiameter = 25;
             const double maxBaseDiameter = 65;
 
-            const double minBottleneckDiameter = 10;
+            const double minBottleneckDiameter = 17;
             var maxBottleneckDiameter = 26;
 
             if (lengthFullBottle < minLengthFullBottle)
