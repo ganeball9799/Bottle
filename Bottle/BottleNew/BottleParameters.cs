@@ -66,7 +66,7 @@ namespace BottleNew
         /// <param name="bottleneckLength">Длина горлышка.</param>
         /// <param name="lengthFullBottle">Длина бутылки.</param>
         /// <returns>Сообщения об ошибках.</returns>
-        private static List<string> Validate(double baseDiameter, double baseLength, double bottleneckDiameter,
+        private List<string> Validate(double baseDiameter, double baseLength, double bottleneckDiameter,
             double bottleneckLength, double lengthFullBottle)
         {
             var errors = new List<string>();
@@ -115,11 +115,11 @@ namespace BottleNew
         }
 
         /// <summary>
-        /// Получает обеще сообщение об ошибке из списка ошибок.
+        /// Получает общее сообщение об ошибке из списка ошибок.
         /// </summary>
         /// <param name="errorMessages">Сообщения об ошибках.</param>
         /// <returns>Общее сообщение.</returns>
-        private static string GetUnitedErrorMessage(IEnumerable<string> errorMessages)
+        private string GetUnitedErrorMessage(IEnumerable<string> errorMessages)
         {
             var result = "Параметры некорректны:\n\n";
 

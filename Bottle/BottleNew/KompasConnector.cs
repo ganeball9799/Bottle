@@ -14,32 +14,33 @@ namespace BottleNew
         private KompasObject _instance;
 
         /// <summary>
-        /// Указывает, что программа КОМПАС-3D запущена.
-        /// </summary>
-        public bool IsActive => _instance != null;
-
-        /// <summary>
-        /// Закрывает КОМПАС-3D.
-        /// </summary>
-        public void Close()
-        {
-            _instance?.Quit();
-            _instance = null;
-        }
-
-        /// <summary>
         /// Запускает КОМПАС-3D.
         /// </summary>
         public void Start()
         {
-            var type = Type.GetTypeFromProgID("KOMPAS.Application.5");
-            _instance = (KompasObject)Activator.CreateInstance(type);
-
-            if (_instance == null)
-                throw new NullReferenceException("Не найдена совместимая версия КОМПАС-3D.");
-
-            _instance.Visible = true;
-            _instance.ActivateControllerAPI();
+            try
+            {
+                if (_instance == null)
+                {
+                    var type = Type.GetTypeFromProgID("KOMPAS.Application.5");
+                    _instance = (KompasObject)Activator.CreateInstance(type);
+                }
+                if (_instance == null) return;
+                _instance.Visible = true;
+                _instance.ActivateControllerAPI();
+            }
+            catch
+            {
+                _instance = null;
+                if (_instance == null)
+                {
+                    var type = Type.GetTypeFromProgID("KOMPAS.Application.5");
+                    _instance = (KompasObject)Activator.CreateInstance(type);
+                }
+                if (_instance == null) return;
+                _instance.Visible = true;
+                _instance.ActivateControllerAPI();
+            }
         }
 
         /// <summary>
@@ -48,9 +49,6 @@ namespace BottleNew
         /// <returns></returns>
         public ksDocument3D CreateDocument3D()
         {
-            if (!IsActive)
-                throw new NullReferenceException("КОМПАС-3D не запущен.");
-
             ksDocument3D document3D = _instance.Document3D();
             document3D.Create(false, false);
             return document3D;

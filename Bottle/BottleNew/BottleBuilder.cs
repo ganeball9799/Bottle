@@ -6,7 +6,6 @@ namespace BottleNew
     /// <summary>
     /// Строитель бутылки.
     /// </summary>
-    [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class BottleBuilder
     {
         /// <summary>
@@ -37,7 +36,6 @@ namespace BottleNew
         {
             BuildBase();
             FilletBase();
-
             BuildBottleneck();
             FilletBottleneck();
         }
