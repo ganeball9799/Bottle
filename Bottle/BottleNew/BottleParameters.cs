@@ -20,7 +20,8 @@ namespace BottleNew
         public BottleParameters(double baseDiameter, double baseLength, double bottleneckDiameter,
             double bottleneckLength, double lengthFullBottle)
         {
-            var errors = Validate(baseDiameter, baseLength, bottleneckDiameter, bottleneckLength, lengthFullBottle);
+            var errors = Validate(baseDiameter, baseLength, 
+                bottleneckDiameter, bottleneckLength, lengthFullBottle);
 
             if (errors.Any())
                 throw new ArgumentException(GetUnitedErrorMessage(errors));
@@ -85,7 +86,8 @@ namespace BottleNew
 
             const double minBottleneckDiameter = 17;
             var maxBottleneckDiameter = 26;
-
+            //TODO: Duplication
+             //TODO: RSDN
             if (lengthFullBottle < minLengthFullBottle)
                 errors.Add($"Длина бутылки меньше минимальной равной {minLengthFullBottle} мм");
             if (lengthFullBottle > maxLengthFullBottle)
@@ -123,6 +125,8 @@ namespace BottleNew
         {
             var result = "Параметры некорректны:\n\n";
 
+            //TODO: RSDN 
+            //TODO: https://docs.microsoft.com/ru-ru/dotnet/api/system.string.join?view=net-5.0
             foreach (var errorMessage in errorMessages)
                 result += errorMessage + ";\n\n";
 

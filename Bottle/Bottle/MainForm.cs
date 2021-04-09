@@ -60,6 +60,7 @@ namespace Bottle
         /// </summary>
         private void SetData()
         {
+            //TODO:
             LengthFullBottleTextBox.Text = "135";
             BaseLengthTextBox.Text = "77";
             BottleneckLengthTextBox.Text = "22";
@@ -103,6 +104,7 @@ namespace Bottle
             }
             catch (ArgumentException ex)
             {
+                 //TODO: RSDN
                 MessageBox.Show(ex.Message, "Построение бутылки", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -116,6 +118,7 @@ namespace Bottle
         {
             var textBox = (TextBox)sender;
 
+             //TODO: RSDN
             if (!CheckDoubleString(textBox.Text))
                 textBox.Text = _inputValues[textBox];
 
@@ -130,19 +133,19 @@ namespace Bottle
         /// <returns></returns>
         private static bool CheckDoubleString(string doubleString)
         {
+             //TODO: RSDN
             if (double.TryParse(doubleString, out _))
                 return true;
-
+            
+             //TODO: RSDN
             if (doubleString.LastOrDefault().ToString() ==
                 CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator &&
                 doubleString.Count(CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator.First().Equals) <=
                 1)
                 return true;
 
-            if (string.IsNullOrWhiteSpace(doubleString))
-                return true;
 
-            return false;
+            return string.IsNullOrWhiteSpace(doubleString);
         }
     }
 }
