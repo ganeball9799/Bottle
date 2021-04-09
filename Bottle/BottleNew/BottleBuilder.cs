@@ -9,20 +9,18 @@ namespace BottleNew
     public class BottleBuilder
     {
         /// <summary>
-        /// Параметры бутлки.
+        /// Экземпляр класса параметров.
         /// </summary>
-        private readonly BottleParameters _bottleParameters;
+        private  BottleParameters _bottleParameters;
 
         /// <summary>
-        /// Компонент.
+        /// Экземпляр компонента
         /// </summary>
-        private readonly ksPart _part;
+        private ksPart _part;
 
         /// <summary>
-        /// Конструктор.
+        /// Конструктор
         /// </summary>
-        /// <param name="document3D">3D документ.</param>
-        /// <param name="bottleParameters">Параметры бутылки.</param>
         public BottleBuilder(ksDocument3D document3D, BottleParameters bottleParameters)
         {
             _part = document3D.GetPart(pTop_part);
@@ -30,7 +28,7 @@ namespace BottleNew
         }
 
         /// <summary>
-        /// Строит бутылку.
+        /// Метод построение бутылки.
         /// </summary>
         public void BuildBottle()
         {
@@ -41,7 +39,7 @@ namespace BottleNew
         }
 
         /// <summary>
-        /// Строит горлышко.
+        /// Построитель горлышка.
         /// </summary>
         private void BuildBottleneck()
         {
@@ -62,7 +60,7 @@ namespace BottleNew
         }
 
         /// <summary>
-        /// Строит основание.
+        /// Построитель основания.
         /// </summary>
         private void BuildBase()
         {
@@ -71,7 +69,7 @@ namespace BottleNew
         }
 
         /// <summary>
-        /// Создает цилиндр.
+        /// Построитель цилиндра.
         /// </summary>
         /// <param name="plane">Плоскость, относительно которой будет выдавливаться цилиндр.</param>
         /// <param name="diameter">Диаметр цилиндра.</param>
@@ -94,7 +92,7 @@ namespace BottleNew
         }
 
         /// <summary>
-        /// Создает выдавливание.
+        /// Построитель выдавливания.
         /// </summary>
         /// <param name="length">Длина выдавливания.</param>
         /// <param name="sketch">Эскиз для выдавливания.</param>
@@ -109,7 +107,7 @@ namespace BottleNew
         }
 
         /// <summary>
-        /// Создает круг.
+        /// Построитель круга.
         /// </summary>
         /// <param name="document2D">2D документ.</param>
         /// <param name="diameter">Диаметр.</param>
@@ -119,7 +117,7 @@ namespace BottleNew
         }
 
         /// <summary>
-        /// Создает скругление.
+        /// Построитель скругления.
         /// </summary>
         /// <param name="face">Грань, которая будет скругляться.</param>
         /// <param name="radius">Радиус скругления.</param>
@@ -139,7 +137,7 @@ namespace BottleNew
         }
 
         /// <summary>
-        /// Округляет основание.
+        /// Округление основания.
         /// </summary>
         private void FilletBase()
         {
@@ -152,7 +150,7 @@ namespace BottleNew
         }
 
         /// <summary>
-        /// Округляет горлышко.
+        /// Округление горлышка.
         /// </summary>
         private void FilletBottleneck()
         {

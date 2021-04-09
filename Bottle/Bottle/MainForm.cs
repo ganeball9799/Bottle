@@ -9,19 +9,33 @@ namespace Bottle
 {
     public partial class MainForm : Form
     {
+        /// <summary>
+        /// Экземпляр конектора
+        /// </summary>
+        private KompasConnector _kompasConnector;
 
-        private readonly KompasConnector _kompasConnector;
+        /// <summary>
+        /// Словарь данных
+        /// </summary>
+        private Dictionary<TextBox, string> _inputValues;
 
-        private readonly Dictionary<TextBox, string> _oldValues;
-
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="kompasConnector"></param>
         public MainForm(KompasConnector kompasConnector)
         {
             _kompasConnector = kompasConnector;
-            _oldValues = new Dictionary<TextBox, string>();
+            _inputValues = new Dictionary<TextBox, string>();
             InitializeComponent();
             SetData();
         }
 
+        /// <summary>
+        /// Очистка полей
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ClearButton_Click(object sender, EventArgs e)
         {
             LengthFullBottleTextBox.Text = "";
@@ -31,11 +45,19 @@ namespace Bottle
             BottleneckDiameterTextBox.Text = "";
         }
 
+        /// <summary>
+        /// Кнопка заполнения полей
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SetDataButton_Click(object sender, EventArgs e)
         {
             SetData();
         }
 
+        /// <summary>
+        /// Заполение полей
+        /// </summary>
         private void SetData()
         {
             LengthFullBottleTextBox.Text = "135";
@@ -45,11 +67,21 @@ namespace Bottle
             BottleneckDiameterTextBox.Text = "20";
         }
 
+        /// <summary>
+        /// Запуск Компаса
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void StartKompasButton_Click(object sender, EventArgs e)
         {
             _kompasConnector.Start();
         }
 
+        /// <summary>
+        /// Строит бутылку
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BuildButton_Click(object sender, EventArgs e)
         {
             try
@@ -69,27 +101,33 @@ namespace Bottle
 
                 bottleBuilder.BuildBottle();
             }
-            catch (NullReferenceException ex)
-            {
-                MessageBox.Show(ex.Message, "Построение бутылки", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             catch (ArgumentException ex)
             {
                 MessageBox.Show(ex.Message, "Построение бутылки", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+        /// <summary>
+        /// Свойство обработки полей
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TextBox_TextChanged(object sender, EventArgs e)
         {
             var textBox = (TextBox)sender;
 
             if (!CheckDoubleString(textBox.Text))
-                textBox.Text = _oldValues[textBox];
+                textBox.Text = _inputValues[textBox];
 
-            _oldValues[textBox] = textBox.Text;
+            _inputValues[textBox] = textBox.Text;
             textBox.SelectionStart = textBox.Text.Length;
         }
 
+        /// <summary>
+        /// Проверка введных данных
+        /// </summary>
+        /// <param name="doubleString"></param>
+        /// <returns></returns>
         private static bool CheckDoubleString(string doubleString)
         {
             if (double.TryParse(doubleString, out _))

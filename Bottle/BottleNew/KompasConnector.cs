@@ -14,7 +14,7 @@ namespace BottleNew
         private KompasObject _instance;
 
         /// <summary>
-        /// Запускает КОМПАС-3D.
+        /// Запускает КОМПАС.
         /// </summary>
         public void Start()
         {
@@ -46,7 +46,6 @@ namespace BottleNew
         /// <summary>
         /// Создает документ в КОМПАС-3D.
         /// </summary>
-        /// <returns></returns>
         public ksDocument3D CreateDocument3D()
         {
             ksDocument3D document3D = _instance.Document3D();
