@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BottleUI", "Bottle\BottleUI
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bottle", "BottleNew\Bottle.csproj", "{C442C10D-154D-4045-B846-EAE55E221606}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BottleParametrs", "BottleParametrs\BottleParametrs.csproj", "{579F5D04-D7BC-4CFC-B3CC-1EAA32FA9BD3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C442C10D-154D-4045-B846-EAE55E221606}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C442C10D-154D-4045-B846-EAE55E221606}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C442C10D-154D-4045-B846-EAE55E221606}.Release|Any CPU.Build.0 = Release|Any CPU
+		{579F5D04-D7BC-4CFC-B3CC-1EAA32FA9BD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{579F5D04-D7BC-4CFC-B3CC-1EAA32FA9BD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{579F5D04-D7BC-4CFC-B3CC-1EAA32FA9BD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{579F5D04-D7BC-4CFC-B3CC-1EAA32FA9BD3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -84,6 +84,10 @@
       <Project>{c442c10d-154d-4045-b846-eae55e221606}</Project>
       <Name>Bottle</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BottleParametrs\BottleParametrs.csproj">
+      <Project>{579f5d04-d7bc-4cfc-b3cc-1eaa32fa9bd3}</Project>
+      <Name>BottleParametrs</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Kompas6API5">
