@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using BottleParametrs;
 using Kompas6API5;
 
 namespace BottleNew
@@ -24,7 +25,7 @@ namespace BottleNew
         /// </summary>
         public BottleBuilder(ksDocument3D document3D, BottleParameters bottleParameters)
         {
-            _part = document3D.GetPart(pTop_part);
+            _part = document3D.GetPart(pTopPart);
             _bottleParameters = bottleParameters;
         }
 
@@ -44,13 +45,13 @@ namespace BottleNew
         /// </summary>
         private void BuildBottleneck()
         {
-            ksEntity planeOffset = _part.NewEntity(o3d_planeOffset);
+            ksEntity planeOffset = _part.NewEntity(o3dPlaneOffset);
             ksPlaneOffsetDefinition planeOffsetDefinition = planeOffset.GetDefinition();
 
             planeOffsetDefinition.direction = true;
             planeOffsetDefinition.offset = _bottleParameters.BaseLength;
 
-            ksEntity planeXOY = _part.GetDefaultEntity(o3d_planeXoy);
+            ksEntity planeXOY = _part.GetDefaultEntity(o3dPlaneXoy);
             planeOffsetDefinition.SetPlane(planeXOY);
 
             planeOffset.Create();
@@ -65,7 +66,7 @@ namespace BottleNew
         /// </summary>
         private void BuildBase()
         {
-            ksEntity planeXOY = _part.GetDefaultEntity(o3d_planeXoy);
+            ksEntity planeXOY = _part.GetDefaultEntity(o3dPlaneXoy);
             CreateCylinder(planeXOY, _bottleParameters.BaseDiameter, _bottleParameters.BaseLength);
         }
 
@@ -77,7 +78,7 @@ namespace BottleNew
         /// <param name="length">Длина цилиндра.</param>
         private void CreateCylinder(ksEntity plane, double diameter, double length)
         {
-            ksEntity sketch = _part.NewEntity(o3d_sketch);
+            ksEntity sketch = _part.NewEntity(o3dSketch);
             ksSketchDefinition sketchDefinition = sketch.GetDefinition();
 
             sketchDefinition.SetPlane(plane);
@@ -99,7 +100,7 @@ namespace BottleNew
         /// <param name="sketch">Эскиз для выдавливания.</param>
         private void CreateExtrusion(double length, ksEntity sketch)
         {
-            ksEntity extrusion = _part.NewEntity(o3d_baseExtrusion);
+            ksEntity extrusion = _part.NewEntity(o3dBaseExtrusion);
             ksBaseExtrusionDefinition extrusionDefinition = extrusion.GetDefinition();
 
             extrusionDefinition.SetSideParam(true, etBland, length);
@@ -124,7 +125,7 @@ namespace BottleNew
         /// <param name="radius">Радиус скругления.</param>
         private void CreateFillet(ksEntity face, double radius)
         {
-            ksEntity fillet = _part.NewEntity(o3d_fillet);
+            ksEntity fillet = _part.NewEntity(o3dFillet);
 
             ksFilletDefinition filletDefinition = fillet.GetDefinition();
 
@@ -142,7 +143,7 @@ namespace BottleNew
         /// </summary>
         private void FilletBase()
         {
-            ksEntityCollection faceCollection = _part.EntityCollection(o3d_face);
+            ksEntityCollection faceCollection = _part.EntityCollection(o3dFace);
 
             faceCollection.SelectByPoint(0, 0, _bottleParameters.BaseLength);
 
@@ -155,7 +156,7 @@ namespace BottleNew
         /// </summary>
         private void FilletBottleneck()
         {
-            ksEntityCollection faceCollection = _part.EntityCollection(o3d_face);
+            ksEntityCollection faceCollection = _part.EntityCollection(o3dFace);
 
             var baseRadius = _bottleParameters.BaseDiameter / 2;
             var bottleneckRadius = _bottleParameters.BottleneckDiameter / 2;
@@ -173,13 +174,13 @@ namespace BottleNew
 
         #region KompasConstants
          //TODO: RSDN
-        private const short pTop_part = -1;
-        private const short o3d_sketch = 5;
-        private const short o3d_baseExtrusion = 24;
-        private const short o3d_face = 6;
-        private const short o3d_planeXoy = 1;
-        private const short o3d_planeOffset = 14;
-        private const short o3d_fillet = 34;
+        private const short pTopPart = -1;
+        private const short o3dSketch = 5;
+        private const short o3dBaseExtrusion = 24;
+        private const short o3dFace = 6;
+        private const short o3dPlaneXoy = 1;
+        private const short o3dPlaneOffset = 14;
+        private const short o3dFillet = 34;
         private const short etBland = 0;
 
         #endregion

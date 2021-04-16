@@ -42,7 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BottleBuilder.cs" />
-    <Compile Include="BottleParameters.cs" />
     <Compile Include="KompasConnector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -83,6 +82,12 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BottleParametrs\BottleParametrs.csproj">
+      <Project>{579f5d04-d7bc-4cfc-b3cc-1eaa32fa9bd3}</Project>
+      <Name>BottleParametrs</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -41,12 +41,12 @@ namespace BottleParametrs
         /// <summary>
         /// Длина основания.
         /// </summary>
-        public double BaseLength { get; }
+        public double BaseLength { get; } 
 
         /// <summary>
         /// Диаметр горлышка.
         /// </summary>
-        public double BottleneckDiameter { get; }
+        public double BottleneckDiameter { get; } 
 
         /// <summary>
         /// Длина горлышка.
@@ -56,7 +56,7 @@ namespace BottleParametrs
         /// <summary>
         /// Длина всей бутылки.
         /// </summary>
-        public double LengthFullBottle { get; }
+        public double LengthFullBottle { get; } 
 
         /// <summary>
         /// Проверяет полученные параметры на корректность.
@@ -99,31 +99,10 @@ namespace BottleParametrs
             //TODO: RSDN
 
             ValidateValue(minLengthFullBottle, maxLengthFullBottle,lengthFullBottle, nameValue[0], errors);
-
-            if (lengthFullBottle < minLengthFullBottle)
-                errors.Add($"Длина бутылки меньше минимальной равной {minLengthFullBottle} мм");
-            if (lengthFullBottle > maxLengthFullBottle)
-                errors.Add($"Длина бутылки больше максимальной равной {maxLengthFullBottle} мм");
-
-            if (baseLength < minBaseLength)
-                errors.Add($"Длина основания меньше минимальной равной {minBaseLength} мм");
-            if (baseLength > maxBaseLength)
-                errors.Add($"Длина основания больше максимальной равной {maxBaseLength} мм");
-
-            if (bottleneckLength < minBottleneckLength)
-                errors.Add($"Длина горлышка меньше минимальной равной {minBottleneckLength} мм");
-            if (bottleneckLength > maxBottleneckLength)
-                errors.Add($"Длина горлышка больше максимальной равной {maxBottleneckLength} мм");
-
-            if (baseDiameter < minBaseDiameter)
-                errors.Add($"Диаметр основания меньше минимального равного {minBaseDiameter} мм");
-            if (baseDiameter > maxBaseDiameter)
-                errors.Add($"- Диаметр основания больше максимального равного {maxBaseDiameter} мм");
-
-            if (bottleneckDiameter < minBottleneckDiameter)
-                errors.Add($"Диаметр горлышка меньше минимального равного {minBottleneckDiameter} мм");
-            if (bottleneckDiameter > maxBottleneckDiameter)
-                errors.Add($"- Диаметр горлышка больше максимального равного {maxBottleneckDiameter} мм");
+            ValidateValue(minBaseLength, maxBaseLength, baseLength, nameValue[1], errors);
+            ValidateValue(minBottleneckLength, maxBottleneckLength, bottleneckLength, nameValue[2], errors);
+            ValidateValue(minBaseDiameter, maxBaseDiameter, baseDiameter, nameValue[3], errors);
+            ValidateValue(minBottleneckDiameter, maxBottleneckDiameter, bottleneckDiameter, nameValue[4], errors);
 
             return errors;
         }

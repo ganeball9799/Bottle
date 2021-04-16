@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Globalization;
 using BottleNew;
+using BottleParametrs;
 
 namespace Bottle
 {
@@ -28,7 +29,7 @@ namespace Bottle
             _kompasConnector = kompasConnector;
             _inputValues = new Dictionary<TextBox, string>();
             InitializeComponent();
-            SetData();
+            //SetData();
         }
 
         /// <summary>
@@ -60,7 +61,6 @@ namespace Bottle
         /// </summary>
         private void SetData()
         {
-            //TODO:
             LengthFullBottleTextBox.Text = "135";
             BaseLengthTextBox.Text = "77";
             BottleneckLengthTextBox.Text = "22";
@@ -93,8 +93,8 @@ namespace Bottle
                 var bottleneckLength = double.Parse(BottleneckLengthTextBox.Text);
                 var lengthFullBottle = double.Parse(LengthFullBottleTextBox.Text);
 
-                var bottleParametrs = new BottleParameters(baseDiametr, baseLength, bottleneckDiameter,
-                    bottleneckLength, lengthFullBottle);
+                var bottleParametrs = new BottleParameters(baseDiametr, baseLength, 
+                    bottleneckDiameter, bottleneckLength, lengthFullBottle);
                 _kompasConnector.Start();
                 var document3D = _kompasConnector.CreateDocument3D();
 
@@ -105,7 +105,8 @@ namespace Bottle
             catch (ArgumentException ex)
             {
                  //TODO: RSDN
-                MessageBox.Show(ex.Message, "Построение бутылки", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Построение бутылки", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
         }
 
