@@ -96,7 +96,6 @@ namespace BottleParametrs
             const double minBottleneckDiameter = 15;
             var maxBottleneckDiameter = 26;
             
-            //TODO: RSDN
             ValidateValue(minLengthFullBottle, maxLengthFullBottle,lengthFullBottle,
                 nameValue[0], errors);
             ValidateValue(minBaseLength, maxBaseLength, baseLength, 

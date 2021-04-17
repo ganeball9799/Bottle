@@ -119,7 +119,6 @@ namespace Bottle
         {
             var textBox = (TextBox)sender;
 
-             //TODO: RSDN скобочки
              if (!CheckDoubleString(textBox.Text))
              {
                  textBox.Text = _inputValues[textBox];
@@ -136,17 +135,15 @@ namespace Bottle
         /// <returns></returns>
         private static bool CheckDoubleString(string doubleString)
         {
-             //TODO: RSDN
              if (double.TryParse(doubleString, out _))
              {
                  return true;
              }
 
-             //TODO: RSDN
-             if (doubleString.LastOrDefault().ToString() ==
-                 CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator &&
-                 doubleString.Count(CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator.First().Equals)
-                 <= 1)
+             var separatorSymbol = CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator;
+
+             if (doubleString.LastOrDefault().ToString() == separatorSymbol
+                  && doubleString.Count(separatorSymbol.First().Equals) <= 1)
              {
                  return true;
              }
