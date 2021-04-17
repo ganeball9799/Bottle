@@ -145,8 +145,8 @@ namespace Bottle
              //TODO: RSDN
              if (doubleString.LastOrDefault().ToString() ==
                  CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator &&
-                 doubleString.Count(CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator.First().Equals) <=
-                 1)
+                 doubleString.Count(CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator.First().Equals)
+                 <= 1)
              {
                  return true;
              }
