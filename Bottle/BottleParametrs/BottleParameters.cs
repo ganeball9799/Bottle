@@ -111,7 +111,7 @@ namespace BottleParametrs
         {
             if (min > value || value > max)
             {
-                error.Add($" {name} не в ходит в диапозон {min}-{max} мм");
+                error.Add($"{name} не в ходит в диапозон {min} - {max} мм");
             }
         }
 
