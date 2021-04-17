@@ -7,7 +7,7 @@ namespace Bottle.Tests
     [TestFixture]
     public class BottleParameterTests
     {
-        [Test]
+         //TODO: RSDN
         [TestCase(24, 80, 20, 22, 130, TestName = "Диаметр основания меньше минимального (25).")]
         [TestCase(30, 66, 20, 22, 130, TestName =
             "Длина основания меньше минимального (2/3 минимальной длины бутылки = 66.6666).")]
@@ -26,7 +26,7 @@ namespace Bottle.Tests
                 bottleneckLength, lengthFullBottle));
         }
 
-        [Test]
+         //TODO: RSDN
         [TestCase(60, 77, 18, 22, 135, TestName = "Корректные параметры.")]
         public void BottleParametersTest_Correct(double baseDiameter, double baseLength, double bottleneckDiameter,
             double bottleneckLength, double lengthFullBottle)

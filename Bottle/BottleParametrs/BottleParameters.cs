@@ -95,9 +95,8 @@ namespace BottleParametrs
 
             const double minBottleneckDiameter = 17;
             var maxBottleneckDiameter = 26;
-            //TODO: Duplication
+            
             //TODO: RSDN
-
             ValidateValue(minLengthFullBottle, maxLengthFullBottle,lengthFullBottle, nameValue[0], errors);
             ValidateValue(minBaseLength, maxBaseLength, baseLength, nameValue[1], errors);
             ValidateValue(minBottleneckLength, maxBottleneckLength, bottleneckLength, nameValue[2], errors);
@@ -107,6 +106,7 @@ namespace BottleParametrs
             return errors;
         }
 
+        //TODO: XML комментарии?
         private void ValidateValue(double min, double max, double value, string name, List<string> error)
         {
             if (min > value || value > max)
@@ -123,13 +123,7 @@ namespace BottleParametrs
         {
             var result = "Параметры некорректны:\n\n";
 
-            //TODO: RSDN 
-            //TODO: https://docs.microsoft.com/ru-ru/dotnet/api/system.string.join?view=net-5.0
-            foreach (var errorMessage in errorMessages)
-                result += errorMessage + ";\n\n";
-
-            result = result.Substring(0, result.Length - 3);
-
+            result += string.Join(";\n\n", errorMessages);
             result += '.';
 
             return result;

@@ -104,8 +104,8 @@ namespace Bottle
             }
             catch (ArgumentException ex)
             {
-                 //TODO: RSDN
-                MessageBox.Show(ex.Message, "Построение бутылки", MessageBoxButtons.OK,
+                MessageBox.Show(ex.Message, "Построение бутылки",
+                    MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
         }
@@ -119,7 +119,7 @@ namespace Bottle
         {
             var textBox = (TextBox)sender;
 
-             //TODO: RSDN
+             //TODO: RSDN скобочки
             if (!CheckDoubleString(textBox.Text))
                 textBox.Text = _inputValues[textBox];
 

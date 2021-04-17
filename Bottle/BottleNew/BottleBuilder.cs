@@ -9,7 +9,6 @@ namespace BottleNew
     /// </summary>
     public class BottleBuilder
     {
-        //TODO: Вынести BottleParameters в отдельный проект
         /// <summary>
         /// Экземпляр класса параметров.
         /// </summary>
@@ -173,10 +172,12 @@ namespace BottleNew
         }
 
         #region KompasConstants
-         //TODO: RSDN
+        
+        //TODO: RSDN
         private const short pTopPart = -1;
         private const short o3dSketch = 5;
         private const short o3dBaseExtrusion = 24;
+        
         private const short o3dFace = 6;
         private const short o3dPlaneXoy = 1;
         private const short o3dPlaneOffset = 14;
