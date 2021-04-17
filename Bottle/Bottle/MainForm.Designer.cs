@@ -93,7 +93,7 @@ namespace Bottle
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(101, 15);
             this.label8.TabIndex = 13;
-            this.label8.Text = "(от 25 до 65 мм)";
+            this.label8.Text = "(от 35 до 65 мм)";
             // 
             // label7
             // 
@@ -104,7 +104,7 @@ namespace Bottle
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(101, 15);
             this.label7.TabIndex = 12;
-            this.label7.Text = "(от 17 до 26 мм)";
+            this.label7.Text = "(от 15 до 26 мм)";
             // 
             // label1
             // 
@@ -115,7 +115,7 @@ namespace Bottle
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(115, 15);
             this.label1.TabIndex = 11;
-            this.label1.Text = "(от 100 до 250 мм)";
+            this.label1.Text = "(от 101 до 250 мм)";
             // 
             // SetDataButton
             // 

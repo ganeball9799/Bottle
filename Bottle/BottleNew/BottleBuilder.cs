@@ -24,7 +24,7 @@ namespace BottleNew
         /// </summary>
         public BottleBuilder(ksDocument3D document3D, BottleParameters bottleParameters)
         {
-            _part = document3D.GetPart(pTopPart);
+            _part = document3D.GetPart(-1);
             _bottleParameters = bottleParameters;
         }
 
@@ -44,13 +44,13 @@ namespace BottleNew
         /// </summary>
         private void BuildBottleneck()
         {
-            ksEntity planeOffset = _part.NewEntity(o3dPlaneOffset);
+            ksEntity planeOffset = _part.NewEntity(14);
             ksPlaneOffsetDefinition planeOffsetDefinition = planeOffset.GetDefinition();
 
             planeOffsetDefinition.direction = true;
             planeOffsetDefinition.offset = _bottleParameters.BaseLength;
 
-            ksEntity planeXOY = _part.GetDefaultEntity(o3dPlaneXoy);
+            ksEntity planeXOY = _part.GetDefaultEntity(1);
             planeOffsetDefinition.SetPlane(planeXOY);
 
             planeOffset.Create();
@@ -65,7 +65,7 @@ namespace BottleNew
         /// </summary>
         private void BuildBase()
         {
-            ksEntity planeXOY = _part.GetDefaultEntity(o3dPlaneXoy);
+            ksEntity planeXOY = _part.GetDefaultEntity(1);
             CreateCylinder(planeXOY, _bottleParameters.BaseDiameter, _bottleParameters.BaseLength);
         }
 
@@ -77,7 +77,7 @@ namespace BottleNew
         /// <param name="length">Длина цилиндра.</param>
         private void CreateCylinder(ksEntity plane, double diameter, double length)
         {
-            ksEntity sketch = _part.NewEntity(o3dSketch);
+            ksEntity sketch = _part.NewEntity(5);
             ksSketchDefinition sketchDefinition = sketch.GetDefinition();
 
             sketchDefinition.SetPlane(plane);
@@ -99,10 +99,10 @@ namespace BottleNew
         /// <param name="sketch">Эскиз для выдавливания.</param>
         private void CreateExtrusion(double length, ksEntity sketch)
         {
-            ksEntity extrusion = _part.NewEntity(o3dBaseExtrusion);
+            ksEntity extrusion = _part.NewEntity(24);
             ksBaseExtrusionDefinition extrusionDefinition = extrusion.GetDefinition();
 
-            extrusionDefinition.SetSideParam(true, etBland, length);
+            extrusionDefinition.SetSideParam(true, 0, length);
             extrusionDefinition.SetSketch(sketch);
             extrusion.Create();
         }
@@ -124,7 +124,7 @@ namespace BottleNew
         /// <param name="radius">Радиус скругления.</param>
         private void CreateFillet(ksEntity face, double radius)
         {
-            ksEntity fillet = _part.NewEntity(o3dFillet);
+            ksEntity fillet = _part.NewEntity(34);
 
             ksFilletDefinition filletDefinition = fillet.GetDefinition();
 
@@ -142,7 +142,7 @@ namespace BottleNew
         /// </summary>
         private void FilletBase()
         {
-            ksEntityCollection faceCollection = _part.EntityCollection(o3dFace);
+            ksEntityCollection faceCollection = _part.EntityCollection(6);
 
             faceCollection.SelectByPoint(0, 0, _bottleParameters.BaseLength);
 
@@ -155,7 +155,7 @@ namespace BottleNew
         /// </summary>
         private void FilletBottleneck()
         {
-            ksEntityCollection faceCollection = _part.EntityCollection(o3dFace);
+            ksEntityCollection faceCollection = _part.EntityCollection(6);
 
             var baseRadius = _bottleParameters.BaseDiameter / 2;
             var bottleneckRadius = _bottleParameters.BottleneckDiameter / 2;
@@ -170,20 +170,5 @@ namespace BottleNew
 
             CreateFillet(filletFace, filletRadius);
         }
-
-        #region KompasConstants
-        
-        //TODO: RSDN
-        private const short pTopPart = -1;
-        private const short o3dSketch = 5;
-        private const short o3dBaseExtrusion = 24;
-        
-        private const short o3dFace = 6;
-        private const short o3dPlaneXoy = 1;
-        private const short o3dPlaneOffset = 14;
-        private const short o3dFillet = 34;
-        private const short etBland = 0;
-
-        #endregion
     }
 }

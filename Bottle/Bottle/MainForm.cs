@@ -29,7 +29,7 @@ namespace Bottle
             _kompasConnector = kompasConnector;
             _inputValues = new Dictionary<TextBox, string>();
             InitializeComponent();
-            //SetData();
+            SetData();
         }
 
         /// <summary>
@@ -120,10 +120,12 @@ namespace Bottle
             var textBox = (TextBox)sender;
 
              //TODO: RSDN скобочки
-            if (!CheckDoubleString(textBox.Text))
-                textBox.Text = _inputValues[textBox];
+             if (!CheckDoubleString(textBox.Text))
+             {
+                 textBox.Text = _inputValues[textBox];
+             }
 
-            _inputValues[textBox] = textBox.Text;
+             _inputValues[textBox] = textBox.Text;
             textBox.SelectionStart = textBox.Text.Length;
         }
 
@@ -135,18 +137,21 @@ namespace Bottle
         private static bool CheckDoubleString(string doubleString)
         {
              //TODO: RSDN
-            if (double.TryParse(doubleString, out _))
-                return true;
-            
+             if (double.TryParse(doubleString, out _))
+             {
+                 return true;
+             }
+
              //TODO: RSDN
-            if (doubleString.LastOrDefault().ToString() ==
-                CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator &&
-                doubleString.Count(CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator.First().Equals) <=
-                1)
-                return true;
+             if (doubleString.LastOrDefault().ToString() ==
+                 CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator &&
+                 doubleString.Count(CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator.First().Equals) <=
+                 1)
+             {
+                 return true;
+             }
 
-
-            return string.IsNullOrWhiteSpace(doubleString);
+             return string.IsNullOrWhiteSpace(doubleString);
         }
     }
 }

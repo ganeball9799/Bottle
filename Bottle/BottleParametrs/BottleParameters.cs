@@ -90,28 +90,40 @@ namespace BottleParametrs
             const double minBottleneckLength = minLengthFullBottle / 5;
             var maxBottleneckLength = lengthFullBottle / 5;
 
-            const double minBaseDiameter = 25;
+            const double minBaseDiameter = 35;
             const double maxBaseDiameter = 65;
 
-            const double minBottleneckDiameter = 17;
+            const double minBottleneckDiameter = 15;
             var maxBottleneckDiameter = 26;
             
             //TODO: RSDN
-            ValidateValue(minLengthFullBottle, maxLengthFullBottle,lengthFullBottle, nameValue[0], errors);
-            ValidateValue(minBaseLength, maxBaseLength, baseLength, nameValue[1], errors);
-            ValidateValue(minBottleneckLength, maxBottleneckLength, bottleneckLength, nameValue[2], errors);
-            ValidateValue(minBaseDiameter, maxBaseDiameter, baseDiameter, nameValue[3], errors);
-            ValidateValue(minBottleneckDiameter, maxBottleneckDiameter, bottleneckDiameter, nameValue[4], errors);
+            ValidateValue(minLengthFullBottle, maxLengthFullBottle,lengthFullBottle,
+                nameValue[0], errors);
+            ValidateValue(minBaseLength, maxBaseLength, baseLength, 
+                nameValue[1], errors);
+            ValidateValue(minBottleneckLength, maxBottleneckLength, bottleneckLength, 
+                nameValue[2], errors);
+            ValidateValue(minBaseDiameter, maxBaseDiameter, baseDiameter, 
+                nameValue[3], errors);
+            ValidateValue(minBottleneckDiameter, maxBottleneckDiameter, bottleneckDiameter,
+                nameValue[4], errors);
 
             return errors;
         }
 
-        //TODO: XML комментарии?
+        /// <summary>
+        /// Метод проверки данных на вхождение в диапазон
+        /// </summary>
+        /// <param name="min">Минимальное значение</param>
+        /// <param name="max">Максимальное значение</param>
+        /// <param name="value">Текущее значение</param>
+        /// <param name="name">Имя параметра</param>
+        /// <param name="error">Лист с ошибками</param>
         private void ValidateValue(double min, double max, double value, string name, List<string> error)
         {
             if (min > value || value > max)
             {
-                error.Add($"{name} не в ходит в диапозон {min} - {max} мм");
+                error.Add($"{name} не в ходит в диапазон {min} - {max} мм");
             }
         }
 
