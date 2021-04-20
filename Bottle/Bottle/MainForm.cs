@@ -65,7 +65,7 @@ namespace Bottle
             BaseLengthTextBox.Text = "77";
             BottleneckLengthTextBox.Text = "22";
             BaseDiameterTextBox.Text = "60";
-            BottleneckDiameterTextBox.Text = "20";
+            BottleneckDiameterTextBox.Text = "25";
         }
 
         /// <summary>

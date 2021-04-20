@@ -74,13 +74,6 @@ namespace BottleParametrs
 
             var nameValue = new List<string>();
 
-            nameValue.Add("Длина бутылки");
-            nameValue.Add("Длина основания");
-            nameValue.Add("Длина горлышка");
-            nameValue.Add("Диаметр основания");
-            nameValue.Add("Диаметр горлышка");
-
-
             const double minLengthFullBottle = 100;
             const double maxLengthFullBottle = 250;
 
@@ -90,22 +83,22 @@ namespace BottleParametrs
             const double minBottleneckLength = minLengthFullBottle / 5;
             var maxBottleneckLength = lengthFullBottle / 5;
 
-            const double minBaseDiameter = 35;
+            const double minBaseDiameter = 25;
             const double maxBaseDiameter = 65;
 
-            const double minBottleneckDiameter = 15;
-            var maxBottleneckDiameter = 26;
+            const double minBottleneckDiameter = minBaseDiameter/2;
+            var maxBottleneckDiameter = maxBaseDiameter/2;
             
             ValidateValue(minLengthFullBottle, maxLengthFullBottle,lengthFullBottle,
-                nameValue[0], errors);
-            ValidateValue(minBaseLength, maxBaseLength, baseLength, 
-                nameValue[1], errors);
-            ValidateValue(minBottleneckLength, maxBottleneckLength, bottleneckLength, 
-                nameValue[2], errors);
-            ValidateValue(minBaseDiameter, maxBaseDiameter, baseDiameter, 
-                nameValue[3], errors);
+                "Длина бутылки", errors);
+            ValidateValue(minBaseLength, maxBaseLength, baseLength,
+                "Длина основания", errors);
+            ValidateValue(minBottleneckLength, maxBottleneckLength, bottleneckLength,
+                "Длина горлышка", errors);
+            ValidateValue(minBaseDiameter, maxBaseDiameter, baseDiameter,
+                "Диаметр основания", errors);
             ValidateValue(minBottleneckDiameter, maxBottleneckDiameter, bottleneckDiameter,
-                nameValue[4], errors);
+                "Диаметр горлышка", errors);
 
             return errors;
         }
