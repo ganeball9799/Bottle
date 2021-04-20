@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 using Kompas6API5;
 
 namespace BottleNew
@@ -19,28 +20,60 @@ namespace BottleNew
         /// </summary>
         public void Start()
         {
+
+            var recievingResult = GetActiveKompas(out var kompas);
+            if (!recievingResult)
+            {
+                var creationResult = CreateCompasInstance(out kompas);
+                if (!creationResult)
+                {
+                    throw new ArgumentException(
+                        "Не удалось создать новый экземпляр КОМПАС-3D."
+                    );
+                }
+            }
+            kompas.Visible = true;
+            kompas.ActivateControllerAPI();
+            _instance = kompas;
+        }
+
+        /// <summary>
+        /// Подключение к открытому Компасу
+        /// </summary>
+        /// <param name="kompas"></param>
+        /// <returns></returns>
+        private bool GetActiveKompas(out KompasObject kompas)
+        {
+            kompas = null;
             try
             {
-                if (_instance == null)
-                {
-                    var type = Type.GetTypeFromProgID("KOMPAS.Application.5");
-                    _instance = (KompasObject)Activator.CreateInstance(type);
-                }
-                if (_instance == null) return;
-                _instance.Visible = true;
-                _instance.ActivateControllerAPI();
+                kompas = (KompasObject)Marshal.GetActiveObject("KOMPAS.Application.5");
+                return true;
             }
-            catch
+            catch (COMException)
             {
-                _instance = null;
-                if (_instance == null)
-                {
-                    var type = Type.GetTypeFromProgID("KOMPAS.Application.5");
-                    _instance = (KompasObject)Activator.CreateInstance(type);
-                }
-                if (_instance == null) return;
-                _instance.Visible = true;
-                _instance.ActivateControllerAPI();
+                return false;
+            }
+        }
+
+
+        /// <summary>
+        /// Открытие нового компаса
+        /// </summary>
+        /// <param name="kompas"></param>
+        /// <returns></returns>
+        private bool CreateCompasInstance(out KompasObject kompas)
+        {
+            try
+            {
+                var type = Type.GetTypeFromProgID("KOMPAS.Application.5");
+                kompas = (KompasObject)Activator.CreateInstance(type);
+                return true;
+            }
+            catch (COMException)
+            {
+                kompas = null;
+                return false;
             }
         }
 
