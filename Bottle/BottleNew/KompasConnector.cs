@@ -13,7 +13,7 @@ namespace BottleNew
         /// <summary>
         /// Экземпляр КОМПАС-3D.
         /// </summary>
-        private KompasObject _instance;
+        public KompasObject _instance;
 
         /// <summary>
         /// Запускает КОМПАС.

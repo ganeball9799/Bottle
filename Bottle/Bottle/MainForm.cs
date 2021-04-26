@@ -98,7 +98,7 @@ namespace Bottle
                 _kompasConnector.Start();
                 var document3D = _kompasConnector.CreateDocument3D();
 
-                var bottleBuilder = new BottleBuilder(document3D, bottleParametrs);
+                var bottleBuilder = new BottleBuilder(document3D, bottleParametrs,_kompasConnector);
 
                 bottleBuilder.BuildBottle();
             }
