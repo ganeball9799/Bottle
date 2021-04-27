@@ -179,6 +179,9 @@ namespace BottleNew
             CreateFillet(filletFace, filletRadius);
         }
 
+        /// <summary>
+        /// Строит прямоугольник
+        /// </summary>
         private void CreateRectangle(double lenght,double x,double y,double ang)
         {
             ksEntity sketch = _part.NewEntity(5);
@@ -202,17 +205,22 @@ namespace BottleNew
             MakeCutExtrude(sketch, 2);
         }
 
-        
+        /// <summary>
+        /// Делает вырез
+        /// </summary>
         private void MakeCutExtrude(object entitySketch, short direction)
         {
             var entityCutExtrusion = (ksEntity)_part.NewEntity((short)Obj3dType.o3d_cutExtrusion);
             var cutExtrusionDefinition = (ksCutExtrusionDefinition)entityCutExtrusion.GetDefinition();
             cutExtrusionDefinition.directionType = direction;
-            cutExtrusionDefinition.SetSideParam(true);
+            cutExtrusionDefinition.SetSideParam(true,0,10);
             cutExtrusionDefinition.SetSketch(entitySketch);
             entityCutExtrusion.Create();
         }
 
+        /// <summary>
+        /// Делает открывашку для бутылки
+        /// </summary>
         private void CreateOpener()
         {
             var lenght = _bottleParameters.BottleneckDiameter;
