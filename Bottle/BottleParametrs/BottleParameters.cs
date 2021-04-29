@@ -74,7 +74,7 @@ namespace BottleParametrs
 
             var nameValue = new List<string>();
 
-            const double minLengthFullBottle = 101;
+            const double minLengthFullBottle = 100;
             const double maxLengthFullBottle = 250;
 
             const double minBaseLength = 2 * minLengthFullBottle / 3;
