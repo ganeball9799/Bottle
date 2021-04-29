@@ -74,7 +74,7 @@ namespace BottleParametrs
 
             var nameValue = new List<string>();
 
-            const double minLengthFullBottle = 100;
+            const double minLengthFullBottle = 101;
             const double maxLengthFullBottle = 250;
 
             const double minBaseLength = 2 * minLengthFullBottle / 3;
@@ -87,7 +87,7 @@ namespace BottleParametrs
             const double maxBaseDiameter = 65;
 
             const double minBottleneckDiameter = minBaseDiameter/2;
-            var maxBottleneckDiameter = maxBaseDiameter/2;
+            var maxBottleneckDiameter = baseDiameter/2;
             
             ValidateValue(minLengthFullBottle, maxLengthFullBottle,lengthFullBottle,
                 "Длина бутылки", errors);
